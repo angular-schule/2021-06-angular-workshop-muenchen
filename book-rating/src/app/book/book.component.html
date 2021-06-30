@@ -1,0 +1,24 @@
+<div class="card mb-4" *ngIf="book">
+  <div class="card-body bg-light">
+    <img
+      class="img-thumbnail float-right"
+      src="//api.angular.schule/avatar/{{ book.rating }}"
+    />
+    <div class="card-title">
+      <h2>
+        {{ book.title }}
+        <span class="badge badge-secondary">{{ book.rating }}</span>
+      </h2>
+    </div>
+
+    <p>
+        <strong>Autoren:</strong>
+        <ng-container *ngFor="let a of book.authors; last as l">
+            {{ a }}<ng-container *ngIf="!l">, </ng-container>
+        </ng-container>
+    </p>
+
+    <p>{{ book.description }}</p>
+    <p>Preis: {{ book.price }}</p>
+  </div>
+</div>

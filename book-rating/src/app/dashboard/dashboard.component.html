@@ -1,1 +1,9 @@
-<p>dashboard works!</p>
+<br-book
+    *ngFor="let b of books"
+    [book]="b"></br-book>
+
+<hr>
+
+<ul>
+    <li *ngFor="let item of books">{{ item.title }}</li>
+</ul>

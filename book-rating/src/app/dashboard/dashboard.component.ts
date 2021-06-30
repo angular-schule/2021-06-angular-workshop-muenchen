@@ -10,7 +10,26 @@ export class DashboardComponent implements OnInit {
   
   books: Book[] = [];
 
-  constructor() {}
+  constructor() {
+    this.books = [
+      {
+        isbn: '111',
+        title: 'Angular',
+        description: 'Grundlagen und mehr',
+        rating: 5,
+        price: 36.9,
+        authors: ['FM', 'DK', 'JH']
+      },
+      {
+        isbn: '222',
+        title: 'Vue.js',
+        description: 'Das grüne Framework',
+        rating: 3,
+        price: 32.9,
+        authors: ['Evan You']
+      }
+    ];
+  }
 
   ngOnInit(): void {
   }
