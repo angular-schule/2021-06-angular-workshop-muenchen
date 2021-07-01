@@ -7,7 +7,7 @@ import { Book } from '../shared/book';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  
+
   books: Book[] = [];
 
   constructor() {

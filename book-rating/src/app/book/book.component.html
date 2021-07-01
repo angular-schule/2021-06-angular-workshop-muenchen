@@ -12,6 +12,10 @@
     </div>
 
     <p>
+      <ng-container *ngFor="let x of getStars(book.rating)">⭐️</ng-container>
+    </p>
+
+    <p>
         <strong>Autoren:</strong>
         <ng-container *ngFor="let a of book.authors; last as l">
             {{ a }}<ng-container *ngIf="!l">, </ng-container>

@@ -15,4 +15,8 @@ export class BookComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getStars(i: number): unknown[] {
+    return new Array(i);
+  }
+
 }
