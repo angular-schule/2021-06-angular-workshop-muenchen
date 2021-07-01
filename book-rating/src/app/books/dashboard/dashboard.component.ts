@@ -11,7 +11,8 @@ export class DashboardComponent implements OnInit {
 
   books: Book[] = [];
 
-  constructor() {
+  constructor(private rs: BookRatingService) {
+
     this.books = [
       {
         isbn: '111',
@@ -36,11 +37,18 @@ export class DashboardComponent implements OnInit {
   }
 
   doRateUp(book: Book) {
-    console.log('UP', book);
+    const ratedBook = this.rs.rateUp(book);
+    this.updateList(ratedBook);
   }
   
   doRateDown(book: Book) {
-    console.log('DOWN', book);
+    const ratedBook = this.rs.rateDown(book);
+    this.updateList(ratedBook);
+  }
+
+  private updateList(ratedBook: Book) {
+    this.books = this.books
+      .map(b => b.isbn === ratedBook.isbn ? ratedBook : b);
   }
 
 }
