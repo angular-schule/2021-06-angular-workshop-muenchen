@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BooksModule } from './books/books.module';
+import { BookRatingService } from './books/shared/book-rating.service';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,12 @@ import { BooksModule } from './books/books.module';
     BooksModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    /*{
+      provide: BookRatingService,
+      useClass: environment.production ? BookRatingService : BookRatingService
+    }*/
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -17,7 +17,7 @@ export class BooksRoutingModule { }
 /**
  * TODO für Montag
  *
- * Links
+ * Links ✅
  * Detailseite
  * - ISBN aus der URL holen
  * - HTTP

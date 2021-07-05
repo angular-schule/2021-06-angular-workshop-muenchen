@@ -9,6 +9,7 @@ describe('DashboardComponent', () => {
   let ratingMock: BookRatingService;
 
   beforeEach(async () => {
+    // Mock / Stub
     ratingMock = {
       rateUp: book => book,
       rateDown: book => book,

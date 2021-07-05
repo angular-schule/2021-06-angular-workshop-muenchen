@@ -17,7 +17,6 @@ export class DashboardComponent implements OnInit {
     this.bs.getAll().subscribe(books => {
       this.books = books;
     });
-
   }
 
   ngOnInit(): void {
