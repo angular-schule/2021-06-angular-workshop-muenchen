@@ -1,3 +1,18 @@
-<input type="text" [(ngModel)]="myText">
+<form [formGroup]="bookForm">
+    <input type="text" formControlName="isbn">
+</form>
 
-{{ myText }}
+
+<pre>{{ bookForm.value | json }}</pre>
+
+<!--
+TODO:
+- Formular-Template fertig bauen
+- Validierung
+    - Meldungen/Feedback
+- Buch erzeugen
+- Event auslösen
+- HTTP
+- bei Erfolg: navigieren zur Detailseite
+
+-->
