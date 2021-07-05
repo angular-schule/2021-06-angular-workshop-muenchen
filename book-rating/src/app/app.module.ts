@@ -4,9 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BooksModule } from './books/books.module';
-import { BookRatingService } from './books/shared/book-rating.service';
-import { environment } from 'src/environments/environment';
+// import { BooksModule } from './books/books.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +13,7 @@ import { environment } from 'src/environments/environment';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BooksModule,
+    // BooksModule,
     HttpClientModule
   ],
   providers: [
