@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, of, from, timer, interval, ReplaySubject } from 'rxjs';
+import { Observable, of, from, timer, interval, ReplaySubject, Subscriber } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
 
 @Component({
@@ -22,6 +22,42 @@ export class CreatingComponent implements OnInit {
      */
 
     /******************************/
+
+/*
+    function producer(obs) {
+      const result = Math.random();
+      obs.next(result);
+      
+      obs.next(2);
+      obs.next(3);
+
+      setTimeout(() => {
+        obs.next(4);
+      }, 2000);
+
+      setTimeout(() => {
+        obs.complete();
+      }, 3000);
+    }
+
+    const observer = {
+      next: e => console.log(e),
+      error: err => console.error(err),
+      complete: () => console.log('C')
+    };
+    // producer(observer);
+
+    const myObs$ = new Observable(producer);
+    myObs$.subscribe(observer);*/
+
+    timer(1000, 1000).pipe(
+      map(e => e * 3),
+      filter(e => e % 2 === 0)
+    ).subscribe({
+      next: e => this.log(e),
+      error: e => this.log(e),
+      complete: () => this.log('COMPLETE'),
+    });
 
     
     /******************************/
