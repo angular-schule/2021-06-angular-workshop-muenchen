@@ -48,9 +48,7 @@ export class BookFormComponent implements OnInit {
       return;
     }*/
 
-    console.log('submit');
-
-    const book = {
+    const book: Book = {
       ...this.bookForm.value,
       authors: []
     };
