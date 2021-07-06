@@ -1,5 +1,34 @@
-<form [formGroup]="bookForm">
-    <input type="text" formControlName="isbn">
+<form [formGroup]="bookForm" (ngSubmit)="submitForm()">
+
+    <div class="form-group">
+        <label>ISBN</label>
+        <input type="text" class="form-control" formControlName="isbn">
+        <div class="feedback-error" *ngIf="isInvalid('isbn')">Die ISBN ist ungültig.</div>
+        <div class="feedback-error" *ngIf="hasError('isbn', 'required')">Die ISBN muss angegeben werden.</div>
+        <div class="feedback-error" *ngIf="hasError('isbn', 'minlength')">Die ISBN ist zu kurz.</div>
+    </div>
+
+    <div class="form-group">
+        <label>Titel</label>
+        <input type="text" class="form-control" formControlName="title">
+    </div>
+
+    <div class="form-group">
+        <label>Beschreibung</label>
+        <textarea class="form-control" formControlName="description"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label>Rating</label>
+        <input type="number" class="form-control" formControlName="rating">
+    </div>
+
+    <div class="form-group">
+        <label>Preis</label>
+        <input type="number" class="form-control" formControlName="price">
+    </div>
+
+    <button type="submit" class="btn btn-success" [disabled]="bookForm.invalid">Abschicken</button>
 </form>
 
 
@@ -7,9 +36,9 @@
 
 <!--
 TODO:
-- Formular-Template fertig bauen
-- Validierung
-    - Meldungen/Feedback
+- Formular-Template fertig bauen ✅
+- Validierung  ✅
+    - Meldungen/Feedback ✅
 - Buch erzeugen
 - Event auslösen
 - HTTP
