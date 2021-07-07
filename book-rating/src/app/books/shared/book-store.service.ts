@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Book } from './book';
 
@@ -15,7 +16,9 @@ export class BookStoreService {
   constructor(private http: HttpClient) {}
 
   getAll(): Observable<Book[]> {
-    return this.http.get<Book[]>(this.api + '/books');
+    return this.http.get<Book[]>(this.api + '/books').pipe(
+      retry(5)
+    );
   }
 
   getSingle(isbn: string): Observable<Book> {
