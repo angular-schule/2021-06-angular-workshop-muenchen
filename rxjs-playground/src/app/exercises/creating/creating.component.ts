@@ -23,7 +23,7 @@ export class CreatingComponent implements OnInit {
 
     /******************************/
 
-/*
+
     function producer(obs) {
       const result = Math.random();
       obs.next(result);
@@ -48,7 +48,7 @@ export class CreatingComponent implements OnInit {
     // producer(observer);
 
     const myObs$ = new Observable(producer);
-    myObs$.subscribe(observer);*/
+    myObs$.subscribe(observer);
 
     timer(1000, 1000).pipe(
       map(e => e * 3),
