@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { retry } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Book } from './book';
@@ -30,6 +30,9 @@ export class BookStoreService {
   }
 
   search(term: string): Observable<Book[]> {
+    if (!term) {
+      return of([]);
+    }
     return this.http.get<Book[]>(this.api + '/books/search/' + term);
   }
 

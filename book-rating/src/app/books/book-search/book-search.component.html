@@ -3,3 +3,9 @@
         class="form-control"
         [formControl]="searchControl">
 </div>
+
+<div *ngIf="loading" class="feedback-success">Wird geladen...</div>
+
+<ul>
+    <li *ngFor="let b of books$ | async">{{ b.title }}</li>
+</ul>

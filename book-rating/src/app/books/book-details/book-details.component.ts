@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { catchError, map, switchMap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, delay, map, share, shareReplay, startWith, switchMap } from 'rxjs/operators';
 
 import { Book } from '../shared/book';
 import { BookStoreService } from '../shared/book-store.service';
@@ -12,7 +13,7 @@ import { BookStoreService } from '../shared/book-store.service';
 })
 export class BookDetailsComponent implements OnInit {
 
-  book?: Book;
+  book$: Observable<Book>;
 
   constructor(private route: ActivatedRoute, private bs: BookStoreService) {
     /* Synchroner Weg
@@ -20,12 +21,28 @@ export class BookDetailsComponent implements OnInit {
     console.log(isbn);
     */
 
-   this.route.paramMap.pipe(
+   this.book$ = this.route.paramMap.pipe(
      map(params => params.get('isbn') || ''),
-     switchMap(isbn => this.bs.getSingle(isbn))
-   ).subscribe(book => {
-    this.book = book;
-  });
+     switchMap(isbn => this.bs.getSingle(isbn)),
+     catchError(err => {
+       return of({
+        isbn: '111',
+        title: 'Standardbuch',
+        authors: [],
+        description: '',
+        rating: 5,
+        price: 100
+      })
+     })
+     /*startWith({
+       isbn: '111',
+       title: 'Standardbuch',
+       authors: [],
+       description: '',
+       rating: 5,
+       price: 100
+     })*/
+   );
     
     
   }
